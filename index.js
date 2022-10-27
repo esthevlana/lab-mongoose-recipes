@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 // Import of the model Recipe from './models/Recipe.model.js'
 const Recipe = require('./models/Recipe.model');
+
 // Import of the data from './data.json'
 const data = require('./data');
 
@@ -17,6 +18,30 @@ const manageRecipes = async () => {
 
     // Before adding any recipes to the database, let's remove all existing ones
     await Recipe.deleteMany();
+    //Iteration 2
+    /* const recipeTitle = new Recipe({ title: 'Asian Glazed Chicken Thighs', cuisine: 'Asian'});
+    const savedRecipe = await recipeTitle.save();
+    console.log(savedRecipe.title); */
+
+    //Iteration 3
+    /* const allRecipes = await Recipe.insertMany(data);
+
+    allRecipes.forEach((recipes) =>
+    console.log(recipes.title)); */
+
+    //Iterarion 4
+    /* let updateRecipe = await Recipe.findOneAndUpdate('Rigatoni alla Genovese', 
+    {
+      duration: '100'
+    });
+    console.log("Rigatoni alla Genovese duration has been updated"); */
+
+    //Iterarion 5
+
+    await Recipe.deleteOne({title: 'Carrot Cake'});
+    console.log("Carrot Cake has been removed")
+
+    dbConnection.disconnect();
 
     // Run your code here, after you have insured that the connection was made
   } catch (error) {
